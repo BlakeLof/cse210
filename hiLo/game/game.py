@@ -1,8 +1,9 @@
 from game.card import Card
-
+"""Calls the card file from the game folder"""
 class Game:
-
+    """This file will directly run the game, hence why it is called Game"""
     def _init_(self):
+       """Contuctor for the Game file"""
 
        self.card = Card()
        self.is_playing = True
@@ -12,13 +13,15 @@ class Game:
        self.lastCard = 5
        
     def start_game(self):
-
+        """"Main Game Loop"""
         while self.is_playing:
             self.get_inputs()
             self.check()
             self.do_outputs()
     
     def get_inputs(self):
+        """Pretty much is the full game"""
+
         loop=True
         
         print(f"The card is: {self.lastCard}")
@@ -33,6 +36,7 @@ class Game:
 
     
     def check(self):
+       """This is the method that controls the point and the rules of the game""" 
        ncard = self.card.newCard()
        print(f"The new card is: {ncard}")
 
@@ -48,6 +52,7 @@ class Game:
         self.lastCard = ncard
     
     def do_outputs(self):
+        """Checks if the Player wants to play again"""
         print(f"Your score is:{self.total_score}")
         loop = True
 
