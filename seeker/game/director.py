@@ -22,7 +22,7 @@ class Director:
             self (Director): an instance of Director.
         """
         self._hider = Hider()
-        self._is_playing = True
+        self._is_playing = True 
         self._seeker = Seeker()
         self._terminal_service = TerminalService()
         
