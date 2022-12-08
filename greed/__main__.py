@@ -18,7 +18,7 @@ FRAME_RATE = 12
 MAX_X = 900
 MAX_Y = 600
 CELL_SIZE = 20
-FONT_SIZE = 20
+FONT_SIZE = 15
 COLS = 60
 ROWS = 40
 CAPTION = "Greed"
@@ -47,7 +47,7 @@ def main():
 
     robot = Actor()
     robot.set_text("#")
-    robot.set_font_size(FONT_SIZE)
+    robot.set_font_size(15)
     robot.set_color(WHITE)
     robot.set_position(position)
     cast.add_actor("robots", robot)

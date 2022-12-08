@@ -13,8 +13,8 @@ class Artifact(Actor):
     def calculate_points(self,artifact):
         
 
-        if artifact.get_text == "*":
-            return 1
+        if (artifact.get_text) == "*":
+            return 1 
         else:
            return -1
 
