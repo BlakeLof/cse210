@@ -17,6 +17,7 @@ class DrawActorsAction(Action):
         Args:
             video_service (VideoService): An instance of VideoService.
         """
+        super().__init__()
         self._video_service = video_service
 
     def execute1(self, cast, script):
@@ -26,29 +27,8 @@ class DrawActorsAction(Action):
             cast (Cast): The cast of Actors in the game.
             script (Script): The script of Actions in the game.
         """
-        score = cast.get_first_actor("scores")
-       
-        snake = cast.get_first_actor("snakes")
-        segments = snake.get_segments()
-        messages = cast.get_actors("messages")
-
-        self._video_service.clear_buffer()
-        
-        self._video_service.draw_actors(segments)
-        self._video_service.draw_actor(score)
-        self._video_service.draw_actors(messages, True)
-        self._video_service.flush_buffer()
+        all_actors = cast.get_all_actors()
+        for actor in all_actors:
+         actor.move_next()
     
-    def execute2(self, cast, script):
-        score = cast.get_first_actor("scores")
-       
-        snake = cast.get_first_actor("snakes")
-        segments = snake.get_segments()
-        messages = cast.get_actors("messages")
-
-        self._video_service.clear_buffer()
-        
-        self._video_service.draw_actors(segments)
-        self._video_service.draw_actor(score)
-        self._video_service.draw_actors(messages, True)
-        self._video_service.flush_buffer()
+    

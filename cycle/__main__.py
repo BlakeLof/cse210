@@ -1,7 +1,6 @@
 import constants
 
 from game.casting.cast import Cast
-from game.casting.food import Food
 from game.casting.score import Score
 from game.casting.snake import Snake
 from game.scripting.script import Script
@@ -18,10 +17,16 @@ from game.shared.point import Point
 
 def main():
     
+    # Create both instances of the snakes or cycles
+    cycle1 = Snake(Point(int(constants.MAX_X - 675), int(constants.MAX_Y / 2)))
+    cycle1.set_cycle_color(constants.RED)
+    cycle2 = Snake(Point(int(constants.MAX_X - 225), int(constants.MAX_Y / 2)))
+    cycle2.set_cycle_color(constants.GREEN)
+
     # create the cast
     cast = Cast()
-    cast.add_actor("foods", Food())
-    cast.add_actor("snakes", Snake())
+    cast.add_actor("cycle1", cycle1)
+    cast.add_actor("cycle2", cycle2)
     cast.add_actor("scores", Score())
    
     # start the game

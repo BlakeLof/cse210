@@ -20,7 +20,8 @@ class ControlActorsAction(Action):
             keyboard_service (KeyboardService): An instance of KeyboardService.
         """
         self._keyboard_service = keyboard_service
-        self._direction = Point(constants.CELL_SIZE, 0)
+        self.cycle1_direction = Point(constants.CELL_SIZE, 0)
+        self.cycle2_direction = Point(constants.CELL_SIZE, 0)
 
     def execute1(self, cast, script):
         """Executes the control actors action.
@@ -31,41 +32,39 @@ class ControlActorsAction(Action):
         """
         # left
         if self._keyboard_service.is_key_down('a'):
-            self._direction = Point(-constants.CELL_SIZE, 0)
+            self.cycle1_direction = Point(-constants.CELL_SIZE, 0)
         
         # right
         if self._keyboard_service.is_key_down('d'):
-            self._direction = Point(constants.CELL_SIZE, 0)
+            self.cycle1_direction = Point(constants.CELL_SIZE, 0)
         
         # up
         if self._keyboard_service.is_key_down('w'):
-            self._direction = Point(0, -constants.CELL_SIZE)
+            self.cycle1_direction = Point(0, -constants.CELL_SIZE)
         
         # down
         if self._keyboard_service.is_key_down('s'):
-            self._direction = Point(0, constants.CELL_SIZE)
+            self.cycle1_direction = Point(0, constants.CELL_SIZE)
         
-        cycle1 = cast.get_first_actor("snakes")
+        cycle1 = cast.get_first_actor("cycle1")
         cycle1.turn_head(self._direction)
-    
-    def execute2(self, cast, script):
 
         # left
-       if self._keyboard_service.is_key_down('j'):
-            self._direction = Point(-constants.CELL_SIZE, 0)
+        if self._keyboard_service.is_key_down('j'):
+            self.cycle2_direction = Point(-constants.CELL_SIZE, 0)
         
         # right
-       if self._keyboard_service.is_key_down('l'):
-            self._direction = Point(constants.CELL_SIZE, 0)
+        if self._keyboard_service.is_key_down('l'):
+            self.cycle2_direction = Point(constants.CELL_SIZE, 0)
         
         # up
-       if self._keyboard_service.is_key_down('i'):
-            self._direction = Point(0, -constants.CELL_SIZE)
+        if self._keyboard_service.is_key_down('i'):
+            self.cycle2_direction = Point(0, -constants.CELL_SIZE)
         
         # down
-       if self._keyboard_service.is_key_down('k'):
-            self._direction = Point(0, constants.CELL_SIZE)
+        if self._keyboard_service.is_key_down('k'):
+            self.cycle2_direction = Point(0, constants.CELL_SIZE)
         
-       cycle2 = cast.get_first_actor("snakes")
-       cycle2.turn_head(self._direction)
-        
+        cycle2 = cast.get_first_actor("cycle2")
+        cycle2.turn_head(self._direction)
+         
